@@ -20,6 +20,7 @@ const video = $('cam'), canvas = $('view'), ctx = canvas.getContext('2d');
 const statusEl = $('status'), captionEl = $('caption'), currentEl = $('current');
 
 let model = null, labels = [], hands = null, running = false;
+let mode = 'model', lastAccepted = null;   // 'model' = trained LSTM, 'rules' = gesture demo
 const windowBuf = [], handFlags = [], recent = [];
 let sentence = [], cooldown = 0, frameNo = 0, probs = [];
 const src = document.createElement('canvas');      // mirrored frame fed to MediaPipe
@@ -83,6 +84,35 @@ function renderCaption() {
   captionEl.textContent = sentence.length ? sentence.slice(-8).join(' ') : 'Tap Start and begin signing';
 }
 
+/* ---------- gesture (rules) mode: works with no trained model ---------- */
+const RULE_STABLE = 8;
+function buildGuide() {
+  const g = $('guide');
+  g.hidden = false;
+  g.innerHTML = '<h2>Show one of these gestures</h2>' + GESTURE_GUIDE.map((x) =>
+    `<div class="g" data-k="${x.key}"><b>${CFG.DISPLAY[x.key]}</b><span>${x.how}</span></div>`).join('');
+}
+function handleRules(res) {
+  let label = null;
+  if (res.multiHandLandmarks && res.multiHandLandmarks.length) {
+    label = classifyGesture(res.multiHandLandmarks[0], canvas.width, canvas.height);
+  }
+  recent.push(label);
+  if (recent.length > RULE_STABLE) recent.shift();
+  if (recent.length === RULE_STABLE) {
+    if (recent.every((r) => r === null)) lastAccepted = null;
+    else if (label && recent.every((r) => r === label) && label !== lastAccepted) {
+      const text = CFG.DISPLAY[label];
+      sentence.push(text);
+      lastAccepted = label;
+      if ($('auto').checked) speak(text);
+      renderCaption();
+    }
+  }
+  currentEl.textContent = label ? CFG.DISPLAY[label] : '–';
+  document.querySelectorAll('.g').forEach((el) => el.classList.toggle('hit', el.dataset.k === label));
+}
+
 /* ---------- inference ---------- */
 function predict() {
   const flat = new Float32Array(CFG.SEQ * CFG.FEATS_PER_HAND * 2);
@@ -98,6 +128,7 @@ function onResults(res) {
       drawLandmarks(ctx, lm, { color: '#f43f5e', lineWidth: 1, radius: 3 });
     }
   }
+  if (mode === 'rules') return handleRules(res);
   windowBuf.push(extractKeypoints(res));
   handFlags.push(!!(res.multiHandLandmarks && res.multiHandLandmarks.length));
   if (windowBuf.length > CFG.SEQ) { windowBuf.shift(); handFlags.shift(); }
@@ -166,7 +197,7 @@ async function startCamera() {
   running = true;
   $('start').textContent = '⏸ Stop camera';
   $('start').disabled = false;
-  statusEl.textContent = 'Translating… sign in front of the camera';
+  statusEl.textContent = mode === 'rules' ? 'Show a gesture and hold it for half a second' : 'Translating… sign in front of the camera';
   loop();
 }
 
@@ -183,19 +214,19 @@ async function init() {
     labels = await (await fetch('model/labels.json')).json();
     model = await tf.loadLayersModel('model/model.json');
     tf.tidy(() => model.predict(tf.zeros([1, CFG.SEQ, CFG.FEATS_PER_HAND * 2])).dataSync()); // warm-up
+    mode = 'model';
   } catch (e) {
-    statusEl.textContent = 'Model not found. Run convert_to_tfjs.py first (see README).';
-    console.error(e);
-    return;
+    console.warn('No trained model found - using gesture demo mode.', e);
+    mode = 'rules';
+    model = null;
   }
-  probs = labels.map(() => 0);
-  buildBars();
+  if (mode === 'model') { probs = labels.map(() => 0); buildBars(); } else { buildGuide(); }
 
   hands = new Hands({ locateFile: (f) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/${f}` });
   hands.setOptions({ maxNumHands: 2, modelComplexity: 0, minDetectionConfidence: 0.6, minTrackingConfidence: 0.5 });
   hands.onResults(onResults);
 
-  statusEl.textContent = 'Ready';
+  statusEl.textContent = mode === 'rules' ? 'Ready - gesture demo mode (no trained model found)' : 'Ready';
   $('start').disabled = false;
 }
 

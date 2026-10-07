@@ -73,3 +73,23 @@ Local test on a computer: `cd web && python -m http.server 8000` -> http://local
 Notes: if you change the sign list or thresholds in `config.py`, mirror the values in the `CFG`
 block at the top of `web/app.js`. The page loads TensorFlow.js and MediaPipe from the jsDelivr CDN,
 so the phone needs internet on first load.
+
+## Instant gesture demo (no recording or training)
+
+`python demo_rules.py` recognises 7 simple hand gestures straight away using rules on the MediaPipe
+landmarks (`rules.py`). The phone app (`web/`) switches to the same mode automatically when
+`web/model/model.json` is missing, so it works as soon as you host the folder.
+
+| Word | Gesture |
+|---|---|
+| Hello | Open palm, all 5 fingers up |
+| Yes | Thumbs up |
+| No | Thumbs down |
+| I love you | Thumb + index + little finger out |
+| Thank you | Peace sign (index + middle) |
+| Please | Point up with index finger only |
+| Help | Closed fist, thumb tucked in |
+
+These are easy static handshapes, not the real ASL versions of most words (only "I love you" matches ASL).
+For real ASL signs, including moving ones, record your own data and use the trained model (`realtime.py`).
+Thresholds are at the top of `rules.py` and `web/rules.js` (keep both in sync).
