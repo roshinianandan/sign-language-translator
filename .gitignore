@@ -1,0 +1,18 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Recorded training data (large, personal) - remove this line if you want to commit it
+data/*
+!data/.gitkeep
+
+# Intermediate model files
+models/*.h5
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
