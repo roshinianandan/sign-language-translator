@@ -234,3 +234,67 @@ $('start').onclick = () => (running ? stopCamera() : startCamera());
 $('clear').onclick = () => { sentence = []; renderCaption(); };
 $('speak').onclick = () => speak(sentence.join(' '));
 init();
+
+
+async function loadVocabulary() {
+  const list = document.getElementById("wordList");
+  const search = document.getElementById("wordSearch");
+  const count = document.getElementById("wordCount");
+
+  try {
+    const response = await fetch(
+      "sign_language_150_plus_vocabulary.csv"
+    );
+
+    if (!response.ok) {
+      throw new Error("CSV file not found");
+    }
+
+    const csv = await response.text();
+    const rows = csv.trim().split(/\r?\n/).slice(1);
+
+    const words = rows
+      .map(row => row.split(","))
+      .filter(row => row.length >= 3)
+      .map(row => ({
+        word: row[1].trim(),
+        category: row[2].trim()
+      }));
+
+    function renderWords() {
+      const query = search.value.toLowerCase();
+
+      const filtered = words.filter(item =>
+        item.word.toLowerCase().includes(query) ||
+        item.category.toLowerCase().includes(query)
+      );
+
+      count.textContent =
+        `${filtered.length} words found`;
+
+      list.replaceChildren();
+
+      filtered.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "vocabulary-card";
+
+        const word = document.createElement("strong");
+        word.textContent = item.word;
+
+        const category = document.createElement("small");
+        category.textContent = item.category;
+
+        card.append(word, category);
+        list.appendChild(card);
+      });
+    }
+
+    search.addEventListener("input", renderWords);
+    renderWords();
+  } catch (error) {
+    count.textContent =
+      "Could not load vocabulary. Check the CSV file location.";
+  }
+}
+
+loadVocabulary();
