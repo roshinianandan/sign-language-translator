@@ -308,20 +308,28 @@ async function loadVocabulary() {
       count.textContent = `${filtered.length} words found`;
       list.replaceChildren();
 
-      filtered.forEach(item => {
-        const card = document.createElement("div");
-        card.className = "vocabulary-card";
+        
+filtered.forEach(item => {
+  const card = document.createElement("div");
+  card.className = "vocabulary-card";
 
-        const word = document.createElement("strong");
-        word.textContent = item.word;
+  const word = document.createElement("strong");
+  word.textContent = item.word;
 
-        const category = document.createElement("small");
-        category.textContent = item.category;
+  const category = document.createElement("small");
+  category.textContent = item.category;
 
-        card.append(word, category);
-        list.appendChild(card);
-      });
-    }
+  const button = document.createElement("button");
+  button.textContent = "Show Gesture";
+  button.className = "gesture-button";
+
+  button.addEventListener("click", () => {
+    showGesture(item.word);
+  });
+
+  card.append(word, category, button);
+  list.appendChild(card);
+});
 
     search.removeEventListener("input", renderWords);
     search.addEventListener("input", renderWords);
