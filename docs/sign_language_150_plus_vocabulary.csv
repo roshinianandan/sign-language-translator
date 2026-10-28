@@ -1,0 +1,151 @@
+id,word_or_phrase,category,sign_language,data_type
+1,hello,greeting,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+2,goodbye,greeting,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+3,please,politeness,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+4,thank you,politeness,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+5,sorry,politeness,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+6,welcome,greeting,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+7,good morning,greeting,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+8,good night,greeting,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+9,how are you,greeting,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+10,nice to meet you,greeting,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+11,yes,response,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+12,no,response,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+13,maybe,response,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+14,help,emergency,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+15,stop,emergency,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+16,wait,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+17,come,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+18,go,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+19,sit,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+20,stand,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+21,look,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+22,listen,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+23,understand,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+24,I understand,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+25,I don't understand,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+26,repeat,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+27,slow,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+28,fast,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+29,what,question,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+30,where,question,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+31,when,question,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+32,who,question,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+33,why,question,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+34,how,question,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+35,which,question,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+36,name,personal,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+37,my name is,personal,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+38,friend,people,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+39,family,people,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+40,mother,people,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+41,father,people,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+42,sister,people,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+43,brother,people,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+44,child,people,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+45,teacher,people,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+46,student,people,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+47,doctor,people,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+48,nurse,people,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+49,police,emergency,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+50,fire,emergency,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+51,ambulance,emergency,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+52,danger,emergency,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+53,safe,emergency,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+54,hurt,health,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+55,pain,health,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+56,sick,health,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+57,medicine,health,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+58,hospital,health,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+59,water,food_drink,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+60,food,food_drink,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+61,eat,food_drink,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+62,drink,food_drink,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+63,hungry,food_drink,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+64,thirsty,food_drink,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+65,milk,food_drink,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+66,tea,food_drink,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+67,coffee,food_drink,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+68,bread,food_drink,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+69,rice,food_drink,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+70,apple,food_drink,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+71,banana,food_drink,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+72,more,daily_needs,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+73,finished,daily_needs,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+74,bathroom,daily_needs,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+75,toilet,daily_needs,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+76,home,places,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+77,school,places,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+78,college,places,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+79,office,places,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+80,shop,places,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+81,bus,transport,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+82,train,transport,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+83,car,transport,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+84,bike,transport,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+85,road,places,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+86,left,direction,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+87,right,direction,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+88,straight,direction,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+89,near,direction,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+90,far,direction,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+91,today,time,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+92,tomorrow,time,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+93,yesterday,time,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+94,now,time,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+95,later,time,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+96,morning,time,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+97,afternoon,time,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+98,evening,time,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+99,night,time,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+100,time,time,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+101,day,time,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+102,week,time,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+103,month,time,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+104,year,time,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+105,happy,feelings,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+106,sad,feelings,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+107,angry,feelings,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+108,afraid,feelings,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+109,tired,feelings,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+110,excited,feelings,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+111,love,feelings,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+112,I love you,feelings,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+113,miss you,feelings,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+114,beautiful,description,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+115,good,description,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+116,bad,description,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+117,big,description,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+118,small,description,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+119,hot,description,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+120,cold,description,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+121,easy,description,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+122,difficult,description,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+123,again,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+124,please wait,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+125,call me,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+126,phone,objects,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+127,computer,objects,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+128,money,daily_needs,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+129,buy,shopping,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+130,pay,shopping,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+131,open,actions,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+132,close,actions,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+133,give,actions,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+134,take,actions,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+135,write,actions,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+136,read,actions,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+137,learn,education,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+138,work,daily_life,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+139,play,daily_life,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+140,sleep,daily_life,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+141,wake up,daily_life,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+142,thank you very much,politeness,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+143,congratulations,politeness,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+144,sorry for that,politeness,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+145,wait a moment,communication,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+146,I need help,emergency,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+147,call the police,emergency,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+148,where is the bathroom,question,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+149,what is your name,question,ASL (American Sign Language),vocabulary label only; no video or landmark samples
+150,see you later,greeting,ASL (American Sign Language),vocabulary label only; no video or landmark samples
