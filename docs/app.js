@@ -1,3 +1,4 @@
+
 /* Sign Language Translator – browser version.
  * MediaPipe Hands + TensorFlow.js + Web Speech API.
  */
@@ -23,7 +24,6 @@ const CFG = {
 };
 
 const $ = (id) => document.getElementById(id);
-
 const video = $("cam");
 const canvas = $("view");
 const ctx = canvas.getContext("2d");
@@ -148,7 +148,6 @@ function renderBars(current) {
       (p * 100).toFixed(0) + "%";
 
     row.querySelector(".p").textContent = p.toFixed(2);
-
     row.classList.toggle("hit", row.dataset.l === current);
   });
 }
@@ -170,7 +169,6 @@ function buildGuide() {
   if (!g) return;
 
   g.hidden = false;
-
   g.innerHTML =
     "<h2>Show one of these gestures</h2>" +
     GESTURE_GUIDE.map((x) => `
@@ -293,7 +291,6 @@ function onResults(res) {
   }
 
   windowBuf.push(extractKeypoints(res));
-
   handFlags.push(
     !!(
       res.multiHandLandmarks &&
@@ -323,7 +320,6 @@ function onResults(res) {
 
   if (handRatio >= CFG.MIN_HAND) {
     probs = Array.from(predict());
-
     let idx = 0;
 
     probs.forEach((p, i) => {
@@ -398,8 +394,10 @@ async function loop() {
     }
   } catch (error) {
     console.error("Camera processing error:", error);
+
     statusEl.textContent =
       "Camera processing failed. Please refresh the page.";
+
     stopCamera();
     return;
   }
@@ -649,7 +647,6 @@ async function loadVocabulary() {
     });
 
     const headers = rows.shift().map((h) => h.trim());
-
     const wordIndex = headers.indexOf("word_or_phrase");
     const categoryIndex = headers.indexOf("category");
 
@@ -711,7 +708,7 @@ async function loadVocabulary() {
 
 loadVocabulary();
 
-/* ---------- Gesture reference popup ---------- */
+/* ---------- Gesture image popup ---------- */
 
 function showGesture(word) {
   let modal = document.getElementById("gestureModal");
@@ -726,11 +723,13 @@ function showGesture(word) {
     document.body.appendChild(modal);
   }
 
+  // Convert the vocabulary phrase into a JPG filename.
   const slug = word
     .toLowerCase()
     .trim()
+    .replace(/['’]/g, "")
     .replace(/[^a-z0-9]+/g, "_")
-    .replace(/^_|_$/g, "");
+    .replace(/^_+|_+$/g, "");
 
   modal.replaceChildren();
 
@@ -741,41 +740,40 @@ function showGesture(word) {
   title.textContent = word;
 
   const image = document.createElement("img");
-  image.src = `./gestures/${slug}.jpg`;
-  image.alt = `ASL sign reference for ${word}`;
+  image.alt = `Gesture image for ${word}`;
 
   const message = document.createElement("p");
-  message.textContent = "Loading sign reference…";
+  message.textContent = "Loading gesture image…";
 
   image.onload = () => {
-    message.textContent = "ASL sign reference";
+    message.textContent = "";
+    image.hidden = false;
   };
 
   image.onerror = () => {
     image.hidden = true;
     message.textContent =
-      "No gesture image has been added for this word yet.";
+      `No image found for "${word}". Check docs/gestures/${slug}.jpg`;
   };
 
-  const source = document.createElement("a");
-  source.href = "https://aslsignbank.haskins.yale.edu/";
-  source.target = "_blank";
-  source.rel = "noopener noreferrer";
-  source.textContent = "Find this sign in ASL Signbank";
+  image.src = `./gestures/${slug}.jpg`;
+  image.hidden = false;
 
   const close = document.createElement("button");
   close.textContent = "Close";
   close.className = "gesture-button";
   close.type = "button";
+
   close.addEventListener("click", () => modal.remove());
 
-  content.append(title, image, message, source, close);
+  content.append(title, image, message, close);
   modal.appendChild(content);
 
   close.focus();
 }
 
 /* Close the gesture popup using Escape. */
+
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     document.getElementById("gestureModal")?.remove();
