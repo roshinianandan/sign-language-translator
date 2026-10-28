@@ -236,14 +236,17 @@ $('speak').onclick = () => speak(sentence.join(' '));
 init();
 
 
+
 async function loadVocabulary() {
   const list = document.getElementById("wordList");
   const search = document.getElementById("wordSearch");
   const count = document.getElementById("wordCount");
 
+  if (!list || !search || !count) return;
+
   try {
     const response = await fetch(
-      "sign_language_150_plus_vocabulary.csv"
+      "./sign_language_150_plus_vocabulary.csv"
     );
 
     if (!response.ok) {
@@ -251,27 +254,58 @@ async function loadVocabulary() {
     }
 
     const csv = await response.text();
-    const rows = csv.trim().split(/\r?\n/).slice(1);
+
+    // Parse CSV rows, including quoted fields.
+    const rows = csv.trim().split(/\r?\n/).map(line => {
+      const values = [];
+      let value = "";
+      let quoted = false;
+
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+
+        if (char === '"' && line[i + 1] === '"' && quoted) {
+          value += '"';
+          i++;
+        } else if (char === '"') {
+          quoted = !quoted;
+        } else if (char === "," && !quoted) {
+          values.push(value);
+          value = "";
+        } else {
+          value += char;
+        }
+      }
+
+      values.push(value);
+      return values;
+    });
+
+    const headers = rows.shift().map(h => h.trim());
+
+    const wordIndex = headers.indexOf("word_or_phrase");
+    const categoryIndex = headers.indexOf("category");
+
+    if (wordIndex < 0 || categoryIndex < 0) {
+      throw new Error("CSV columns are missing");
+    }
 
     const words = rows
-      .map(row => row.split(","))
-      .filter(row => row.length >= 3)
+      .filter(row => row[wordIndex]?.trim())
       .map(row => ({
-        word: row[1].trim(),
-        category: row[2].trim()
+        word: row[wordIndex].trim(),
+        category: row[categoryIndex]?.trim() || "General"
       }));
 
     function renderWords() {
-      const query = search.value.toLowerCase();
+      const query = search.value.trim().toLowerCase();
 
       const filtered = words.filter(item =>
         item.word.toLowerCase().includes(query) ||
         item.category.toLowerCase().includes(query)
       );
 
-      count.textContent =
-        `${filtered.length} words found`;
-
+      count.textContent = `${filtered.length} words found`;
       list.replaceChildren();
 
       filtered.forEach(item => {
@@ -289,12 +323,17 @@ async function loadVocabulary() {
       });
     }
 
+    search.removeEventListener("input", renderWords);
     search.addEventListener("input", renderWords);
     renderWords();
   } catch (error) {
+    console.error("Vocabulary loading failed:", error);
     count.textContent =
-      "Could not load vocabulary. Check the CSV file location.";
+      "Unable to load vocabulary. Check the CSV path and browser console.";
   }
 }
+
+loadVocabulary();
+
 
 loadVocabulary();
